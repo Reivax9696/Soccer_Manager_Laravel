@@ -1,8 +1,85 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Team Details</h1>
-<p>Name: {{ $team->name }}</p>
-<p>Location: {{ $team->location }}</p>
-<a href="{{ route('teams.index') }}">Back to list</a>
+    <style>
+        body {
+            background-color: #34D399;
+            color: #fff;
+            font-family: 'sans-serif';
+            padding: 8px;
+            text-align: center;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 32rem;
+        }
+
+        .box {
+            background-color: #2F855A;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .title-box {
+            background-color: #256F4A;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .details-box {
+            background-color: #256F4A;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .details-label {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .details-text {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #3B8D5A;
+            color: #fff;
+            border-radius: 4px;
+            margin-top: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #327e4a;
+        }
+    </style>
+
+    <div class="container">
+        <div class="title-box">
+            <h1 class="title">Detalls del Equip</h1>
+        </div>
+
+        <div class="box details-box">
+            <p class="details-label">Nom:</p>
+            <p class="details-text">{{ $team->name }}</p>
+            <p class="details-label">Població:</p>
+            <p class="details-text">{{ $team->location }}</p>
+            <a href="{{ route('teams.index') }}" class="btn">Tornar all llistat de Equips</a>
+        </div>
+    </div>
 @endsection

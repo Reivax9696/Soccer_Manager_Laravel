@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Teams;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class TeamController extends Controller
 {
@@ -28,12 +29,12 @@ class TeamController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'location' => 'nullable|string|max:255',
+            'location' => 'required|string|max:255',
         ]);
 
         Teams::create($request->all());
 
-        return redirect()->route('teams.index')->with('success', 'Team created successfully.');
+        return redirect()->route('teams.index')->with('success', 'Equip creat.');
     }
 
 
@@ -55,13 +56,13 @@ class TeamController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'location' => 'nullable|string|max:255',
+            'location' => 'required|string|max:255',
         ]);
 
         $team = Teams::findOrFail($id);
         $team->update($request->all());
 
-        return redirect()->route('teams.index')->with('success', 'Team updated successfully.');
+        return redirect()->route('teams.index')->with('success', 'Equip editat.');
     }
 
 
@@ -70,6 +71,6 @@ class TeamController extends Controller
         $team = Teams::findOrFail($id);
         $team->delete();
 
-        return redirect()->route('teams.index')->with('success', 'Team deleted successfully.');
+        return redirect()->route('teams.index')->with('success', 'Equip borrat.');
     }
 }

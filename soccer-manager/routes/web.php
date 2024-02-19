@@ -16,7 +16,7 @@ use App\Http\Controllers\MatchController;
 */
 
 Route::get('/', function () {
-    return view('welcome'); // Assuming 'welcome.blade.php' is your landing page
+    return view('welcome');
 });
 
 

@@ -1,20 +1,142 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Matches</h1>
-<a href="{{ route('matches.create') }}">Create New Match</a>
-<ul>
-    @foreach ($matches as $match)
-        <li>
-            Match between {{ $match->team1->name }} and {{ $match->team2->name }}
-            - <a href="{{ route('matches.show', $match->id) }}">View</a>
-            - <a href="{{ route('matches.edit', $match->id) }}">Edit</a>
-            <form action="{{ route('matches.destroy', $match->id) }}" method="POST" style="display:inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Delete</button>
-            </form>
-        </li>
-    @endforeach
-</ul>
+    <style>
+        body {
+            background-color: #34D399;
+            color: #fff;
+            font-family: 'sans-serif';
+            padding: 8px;
+            text-align: center;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 32rem;
+        }
+
+        .box {
+            background-color: #2F855A;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .title-box {
+            background-color: #256F4A;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 4px;
+            margin-top: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-view {
+            background-color: #3B8D5A;
+        }
+
+        .btn-view:hover {
+            background-color: #327e4a;
+        }
+
+        .btn-edit {
+            background-color: #3B8D5A;
+        }
+
+        .btn-edit:hover {
+            background-color: #327e4a;
+        }
+
+        .btn-delete {
+            background-color: #E53E3E;
+        }
+
+        .btn-delete:hover {
+            background-color: #c53030;
+        }
+
+        .btn-back {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: #256F4A;
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #205c41;
+        }
+
+        .btn-create {
+            background-color: #3B8D5A;
+            margin-bottom: 16px;
+        }
+
+        .btn-create:hover {
+            background-color: #327e4a;
+        }
+
+        .match-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .match-details {
+            margin-bottom: 16px;
+        }
+
+        .match-teams {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+    </style>
+
+    <a href="{{ url('/') }}" class="btn btn-back">Tornar a la Pàgina Principal</a>
+
+    <div class="container">
+        <div class="title-box">
+            <h1 class="title">Partits</h1>
+        </div>
+
+        <a href="{{ route('matches.create') }}" class="btn btn-create">Crear un Nou Partit</a>
+
+        @foreach ($matches as $match)
+            <div class="box match-box">
+                <div class="match-details">
+                    <p class="match-teams">Partit entre {{ $match->team1->name }} i {{ $match->team2->name }}</p>
+                </div>
+                <div>
+                    <a href="{{ route('matches.show', $match->id) }}" class="btn btn-view">Més Informació</a>
+                    <a href="{{ route('matches.edit', $match->id) }}" class="btn btn-edit">Editar</a>
+                    <form action="{{ route('matches.destroy', $match->id) }}" method="POST" style="display: inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-delete" onclick="return confirm('Estàs segur que vols borrar aquest partit?')">Borrar</button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+    </div>
 @endsection

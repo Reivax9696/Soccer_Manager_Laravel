@@ -30,12 +30,12 @@ class MatchController extends Controller
               'team1_id' => 'required|exists:teams,id',
               'team2_id' => 'required|exists:teams,id',
               'match_date' => 'required|date',
-              'location' => 'nullable|string',
+              'location' => 'required|string',
 
           ]);
 
           Matches::create($request->all());
-          return redirect()->route('matches.index')->with('success', 'Match created successfully.');
+          return redirect()->route('matches.index')->with('success', 'Partit creat.');
       }
 
 
@@ -57,18 +57,18 @@ class MatchController extends Controller
               'team1_id' => 'required|exists:teams,id',
               'team2_id' => 'required|exists:teams,id',
               'match_date' => 'required|date',
-              'location' => 'nullable|string',
+              'location' => 'required|string',
 
           ]);
 
           $match->update($request->all());
-          return redirect()->route('matches.index')->with('success', 'Match updated successfully.');
+          return redirect()->route('matches.index')->with('success', 'Partit editat.');
       }
 
 
       public function destroy(Matches $match)
       {
           $match->delete();
-          return redirect()->route('matches.index')->with('success', 'Match deleted successfully.');
+          return redirect()->route('matches.index')->with('success', 'Partit borrat.');
       }
 }
