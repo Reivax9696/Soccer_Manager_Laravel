@@ -26,16 +26,21 @@ class TeamController extends Controller
 
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-        ]);
+{
+    $request->validate([
+        'name' => [
+            'required',
+            'string',
+            'max:255',
+            Rule::unique('teams', 'name'),
+        ],
+        'location' => 'required|string|max:255',
+    ]);
 
-        Teams::create($request->all());
+    Teams::create($request->all());
 
-        return redirect()->route('teams.index')->with('success', 'Equip creat.');
-    }
+    return redirect()->route('teams.index')->with('success', 'Equip creat.');
+}
 
 
     public function show($id)
@@ -55,7 +60,12 @@ class TeamController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('teams', 'name'),
+            ],
             'location' => 'required|string|max:255',
         ]);
 

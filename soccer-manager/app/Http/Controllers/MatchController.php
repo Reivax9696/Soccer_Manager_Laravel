@@ -27,14 +27,23 @@ class MatchController extends Controller
       public function store(Request $request)
       {
           $request->validate([
-              'team1_id' => 'required|exists:teams,id',
+              'team1_id' => [
+                  'required',
+                  'exists:teams,id',
+                  function ($attribute, $value, $fail) use ($request) {
+                      $otherTeamId = $request->input('team2_id');
+                      if ($value == $otherTeamId) {
+                          $fail('Els equips han de ser diferents.');
+                      }
+                  },
+              ],
               'team2_id' => 'required|exists:teams,id',
               'match_date' => 'required|date',
               'location' => 'required|string',
-
           ]);
 
           Matches::create($request->all());
+
           return redirect()->route('matches.index')->with('success', 'Partit creat.');
       }
 
@@ -51,19 +60,35 @@ class MatchController extends Controller
           return view('matches.edit', compact('match', 'teams'));
       }
 
+
+
       public function update(Request $request, Matches $match)
       {
-          $request->validate([
-              'team1_id' => 'required|exists:teams,id',
-              'team2_id' => 'required|exists:teams,id',
-              'match_date' => 'required|date',
-              'location' => 'required|string',
 
-          ]);
+         $request->validate([
+             'team1_id' => [
+                'required',
+                'exists:teams,id',
+                function ($attribute, $value, $fail) use ($request, $match) {
+                     $otherTeamId = $request->input('team2_id');
+                     if ($value == $otherTeamId) {
+                         $fail('Els equips han de ser diferents.');
+                     }
+                },
+             ],
+             'team2_id' => 'required|exists:teams,id',
+             'match_date' => 'required|date',
+             'location' => 'required|string',
+         ]);
 
-          $match->update($request->all());
-          return redirect()->route('matches.index')->with('success', 'Partit editat.');
-      }
+
+
+    $match->update($request->all());
+
+    return redirect()->route('matches.index')->with('success', 'Partit editat.');
+
+
+}
 
 
       public function destroy(Matches $match)
