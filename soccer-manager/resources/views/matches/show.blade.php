@@ -122,7 +122,7 @@
             color: #fff;
         }
 
-        button[type="submit"] {
+        button {
             background-color: #3B8D5A;
             color: #fff;
             border: none;
@@ -133,7 +133,7 @@
             transition: background-color 0.3s;
         }
 
-        button[type="submit"]:hover {
+        button:hover {
             background-color: #327e4a;
         }
 
@@ -145,7 +145,6 @@
         }
     </style>
 
-    <a href="{{ url('/') }}" class="btn btn-back">Tornar a la Pàgina Principal</a>
 
     <div class="container">
         <div class="title-box">

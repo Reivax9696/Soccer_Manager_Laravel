@@ -74,7 +74,27 @@
         .btn:hover {
             background-color: #327e4a;
         }
+
+        .btn-back {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: #256F4A;
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #205c41;
+        }
     </style>
+
+    <a href="{{ url('teams') }}" class="btn btn-back">Tornar al Llistat de Equips</a>
 
     <div class="container">
         <div class="title-box">
