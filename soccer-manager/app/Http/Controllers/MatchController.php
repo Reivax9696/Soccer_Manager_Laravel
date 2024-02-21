@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Matches;
 use App\Models\Teams;
+use Illuminate\Support\Facades\Session;
 
 class MatchController extends Controller
 {
@@ -40,11 +41,16 @@ class MatchController extends Controller
               'team2_id' => 'required|exists:teams,id',
               'match_date' => 'required|date',
               'location' => 'required|string',
-          ]);
+          ],
+          [
+            'location.required' => 'És necessari introduir una ubicació per al partit.'
+        ]);
+
+
 
           Matches::create($request->all());
 
-          return redirect()->route('matches.index')->with('success', 'Partit creat.');
+          return redirect()->route('matches.index');
       }
 
 
@@ -79,13 +85,17 @@ class MatchController extends Controller
              'team2_id' => 'required|exists:teams,id',
              'match_date' => 'required|date',
              'location' => 'required|string',
-         ]);
+            ],
+            [
+                'location.required' => 'És necessari introduir una ubicació per al partit.'
+
+            ]);
 
 
 
     $match->update($request->all());
 
-    return redirect()->route('matches.index')->with('success', 'Partit editat.');
+    return redirect()->route('matches.index');
 
 
 }
@@ -94,6 +104,6 @@ class MatchController extends Controller
       public function destroy(Matches $match)
       {
           $match->delete();
-          return redirect()->route('matches.index')->with('success', 'Partit borrat.');
+          return redirect()->route('matches.index');
       }
 }

@@ -145,30 +145,42 @@
             <h1 class="title">Crear Partit</h1>
         </div>
 
-        <form action="{{ route('matches.store') }}" method="POST" class="form-box">
-            @csrf
-
-            <label for="team1_id">Equip 1:</label>
-            <select name="team1_id" id="team1_id" required>
-                @foreach ($teams as $team)
-                    <option value="{{ $team->id }}">{{ $team->name }}</option>
+        @if ($errors->any())
+        <div class="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
                 @endforeach
-            </select>
+            </ul>
+        </div>
+       @endif
 
-            <label for="team2_id">Equip 2:</label>
-            <select name="team2_id" id="team2_id" required>
-                @foreach ($teams as $team)
-                    <option value="{{ $team->id }}">{{ $team->name }}</option>
-                @endforeach
-            </select>
+     <form action="{{ route('matches.store') }}" method="POST" class="form-box">
+        @csrf
 
-            <label for="match_date">Data del Partit:</label>
-            <input type="datetime-local" name="match_date" id="match_date" required>
+        <label for="team1_id">Equip 1:</label>
+        <select name="team1_id" id="team1_id" required>
+            @foreach ($teams as $team)
+                <option value="{{ $team->id }}">{{ $team->name }}</option>
+            @endforeach
+        </select>
 
-            <label for="location">Població:</label>
-            <input type="text" name="location" id="location">
+        <label for="team2_id">Equip 2:</label>
+        <select name="team2_id" id="team2_id" required>
+            @foreach ($teams as $team)
+                <option value="{{ $team->id }}">{{ $team->name }}</option>
+            @endforeach
+        </select>
 
-            <button type="submit" class="btn btn-create">Crear Partit</button>
+        <label for="match_date">Data del Partit:</label>
+        <input type="datetime-local" name="match_date" id="match_date" required>
+
+        <label for="location">Població:</label>
+        <input type="text" name="location" id="location">
+
+        <button type="submit" class="btn btn-create">Crear Partit</button>
+
+
         </form>
     </div>
 @endsection

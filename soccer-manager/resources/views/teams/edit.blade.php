@@ -101,12 +101,24 @@
             <h1 class="title">Editar Equip</h1>
         </div>
 
+        @if ($errors->any())
+        <div class="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+       @endif
+
+
+
         <div class="box form-box">
             <form action="{{ route('teams.update', $team->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <label for="name" class="label">Nom:</label>
-                <input type="text" name="name" id="name" value="{{ $team->name }}" class="input" required>
+                <input type="text" name="name" id="name" value="{{ $team->name }}" class="input">
                 <label for="location" class="label">Població:</label>
                 <input type="text" name="location" id="location" value="{{ $team->location }}" class="input">
                 <button type="submit" class="btn">Actualitzar Equip</button>

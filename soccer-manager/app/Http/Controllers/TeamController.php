@@ -35,11 +35,15 @@ class TeamController extends Controller
             Rule::unique('teams', 'name'),
         ],
         'location' => 'required|string|max:255',
+    ],[
+        'name.required' => 'Es necessari introduir un nom per al equip',
+        'location.required' => 'Es necessari introduir una poblacio per al partit.'
     ]);
+
 
     Teams::create($request->all());
 
-    return redirect()->route('teams.index')->with('success', 'Equip creat.');
+    return redirect()->route('teams.index');
 }
 
 
@@ -64,15 +68,18 @@ class TeamController extends Controller
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('teams', 'name'),
+                Rule::unique('teams', 'name')->ignore($id),
             ],
             'location' => 'required|string|max:255',
+        ],[
+            'name.required' => 'Es necessari introduir un nom per al equip',
+            'location.required' => 'Es necessari introduir una poblacio per al partit.'
         ]);
 
         $team = Teams::findOrFail($id);
         $team->update($request->all());
 
-        return redirect()->route('teams.index')->with('success', 'Equip editat.');
+        return redirect()->route('teams.index');
     }
 
 
@@ -81,6 +88,6 @@ class TeamController extends Controller
         $team = Teams::findOrFail($id);
         $team->delete();
 
-        return redirect()->route('teams.index')->with('success', 'Equip borrat.');
+        return redirect()->route('teams.index');
     }
 }
