@@ -111,9 +111,31 @@
             font-size: 18px;
             margin-bottom: 8px;
         }
+
+        .btn-matches {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: #3B8D5A;
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-teams:hover {
+            background-color: #327e4a;
+        }
+
+
     </style>
 
     <a href="{{ url('/') }}" class="btn btn-back">Tornar a la Pàgina Principal</a>
+
+    <a href="{{ route('matches.index') }}" class="btn btn-matches">Veure Partits</a>
 
     <div class="container">
         <div class="title-box">
@@ -121,6 +143,8 @@
         </div>
 
         <a href="{{ route('teams.create') }}" class="btn btn-create">Crear un Nou Equip</a>
+
+
 
         @foreach ($teams as $team)
             <div class="box match-box">

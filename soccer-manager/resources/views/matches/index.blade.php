@@ -111,9 +111,29 @@
             font-size: 18px;
             margin-bottom: 8px;
         }
+
+        .btn-teams {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: #3B8D5A;
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-teams:hover {
+            background-color: #327e4a;
+        }
     </style>
 
     <a href="{{ url('/') }}" class="btn btn-back">Tornar a la Pàgina Principal</a>
+
+    <a href="{{ route('teams.index') }}" class="btn btn-teams">Veure Equips</a>
 
     <div class="container">
         <div class="title-box">
