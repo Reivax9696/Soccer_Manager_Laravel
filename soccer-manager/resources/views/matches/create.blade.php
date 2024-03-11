@@ -142,6 +142,11 @@
             margin-bottom: 16px;
         }
 
+        input[type="text"],
+        input[type="datetime-local"] {
+            width: calc(100% - 16px);
+        }
+
 
     </style>
 

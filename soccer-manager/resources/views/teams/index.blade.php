@@ -131,6 +131,7 @@
         }
 
 
+
     </style>
 
     <a href="{{ url('/') }}" class="btn btn-back">Tornar a la Pàgina Principal</a>

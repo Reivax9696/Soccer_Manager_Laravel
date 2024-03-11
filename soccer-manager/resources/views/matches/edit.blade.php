@@ -141,6 +141,11 @@
             width: 100px;
             margin-bottom: 16px;
         }
+
+        input[type="text"],
+        input[type="datetime-local"] {
+            width: calc(100% - 16px);
+        }
     </style>
 
     <a href="{{ url('matches') }}" class="btn btn-back">Tornar al Llistat de Partits</a>
