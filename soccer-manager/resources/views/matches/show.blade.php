@@ -143,6 +143,19 @@
             padding: 16px;
             margin-bottom: 16px;
         }
+
+        .score-box {
+            background-color: #256F4A;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
     </style>
 
 
@@ -157,6 +170,20 @@
             <p>Data: {{ $match->match_date }}</p>
             <p>Població: {{ $match->location }}</p>
         </div>
+
+        <div class="score-box">
+            <p class="score">Gols per {{ $match->team1->name }}: {{ $match->score_team1 }}</p>
+            <p class="score">Gols per {{ $match->team2->name }}: {{ $match->score_team2 }}</p>
+
+            @if($match->score_team1 > $match->score_team2)
+                <p class="score">El equip guanyador és: {{ $match->team1->name }}</p>
+            @elseif($match->score_team1 < $match->score_team2)
+                <p class="score">El equip guanyador és: {{ $match->team2->name }}</p>
+            @else
+                <p class="score">El partit ha acabat en empat.</p>
+            @endif
+        </div>
+
 
         <a href="{{ route('matches.index') }}" class="btn btn-view">Tornar a la Llista de Partits</a>
     </div>

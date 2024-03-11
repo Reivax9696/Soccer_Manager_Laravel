@@ -136,6 +136,11 @@
         button:hover {
             background-color: #327e4a;
         }
+
+        .score-input {
+            width: 100px;
+            margin-bottom: 16px;
+        }
     </style>
 
     <a href="{{ url('matches') }}" class="btn btn-back">Tornar al Llistat de Partits</a>
@@ -169,12 +174,18 @@
              @endforeach
         </select>
 
+        <label for="score_team1">Gols Equip 1:</label>
+        <input type="number" name="score_team1" id="score_team1" class="score-input" min="0" value="{{ $match->score_team1 }}" required>
+
         <label for="team2_id">Equip 2:</label>
         <select name="team2_id" id="team2_id" required>
             @foreach ($teams as $team)
                 <option value="{{ $team->id }}" {{ $match->team2_id == $team->id ? 'selected' : '' }}>{{ $team->name }}</option>
             @endforeach
         </select>
+
+        <label for="score_team2">Gols Equip 2:</label>
+        <input type="number" name="score_team2" id="score_team2" class="score-input" min="0" value="{{ $match->score_team2 }}" required>
 
         <label for="match_date">Data del Partit:</label>
         <input type="datetime-local" name="match_date" id="match_date" value="{{ \Carbon\Carbon::parse($match->match_date)->format('Y-m-d\TH:i') }}" required>
