@@ -2,38 +2,6 @@
 
 @section('content')
     <style>
-        body {
-            background-color: #34D399;
-            color: #fff;
-            font-family: 'sans-serif';
-            padding: 8px;
-            text-align: center;
-        }
-
-        .container {
-            margin: 0 auto;
-            max-width: 32rem;
-        }
-
-        .box {
-            background-color: #2F855A;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-
-        .title-box {
-            background-color: #256F4A;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
         .btn {
             display: inline-block;
             padding: 8px 16px;
