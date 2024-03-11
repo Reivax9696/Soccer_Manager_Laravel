@@ -136,6 +136,11 @@
         button:hover {
             background-color: #327e4a;
         }
+
+        input[type="text"],
+        input[type="datetime-local"] {
+            width: calc(100% - 16px);
+        }
     </style>
 
     <a href="{{ url('matches') }}" class="btn btn-back">Tornar al Llistat de Partits</a>

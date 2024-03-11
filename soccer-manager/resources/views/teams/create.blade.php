@@ -93,6 +93,10 @@
         .btn-back:hover {
             background-color: #205c41;
         }
+
+        input[type="text"] {
+            width: calc(100% - 16px);
+        }
     </style>
 
     <a href="{{ url('teams') }}" class="btn btn-back">Tornar al Llistat de Equips</a>

@@ -60,7 +60,7 @@
         <div class="box">
             <p class="mb-4">Escolleix una opció:</p>
             <a href="{{ route('teams.index') }}" class="btn">Veure Equips</a>
-            <a href="{{ route('matches.index') }}" class="btn">Veuere Partits</a>
+            <a href="{{ route('matches.index') }}" class="btn">Veure Partits</a>
         </div>
     </div>
 @endsection
