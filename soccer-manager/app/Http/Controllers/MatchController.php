@@ -41,6 +41,8 @@ class MatchController extends Controller
               'team2_id' => 'required|exists:teams,id',
               'match_date' => 'required|date',
               'location' => 'required|string',
+              'score_team1' => 'required|integer',
+              'score_team2' => 'required|integer',
           ],
           [
             'location.required' => 'És necessari introduir una ubicació per al partit.'
@@ -85,6 +87,8 @@ class MatchController extends Controller
              'team2_id' => 'required|exists:teams,id',
              'match_date' => 'required|date',
              'location' => 'required|string',
+             'score_team1' => 'required|integer',
+             'score_team2' => 'required|integer',
             ],
             [
                 'location.required' => 'És necessari introduir una ubicació per al partit.'

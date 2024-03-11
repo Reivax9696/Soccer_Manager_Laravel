@@ -15,8 +15,8 @@ class Matches extends Model
         'team2_id',
         'match_date',
         'location',
-        'scoreTeam1',
-        'scoreTeam2',
+        'score_team1',
+        'score_team2',
         'status',
     ];
 
