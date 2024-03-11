@@ -146,6 +146,14 @@
         input[type="datetime-local"] {
             width: calc(100% - 16px);
         }
+
+        .alert {
+          background-color: #DC2626;
+          color: #fff;
+          border-radius: 4px;
+          padding: 12px 16px;
+          margin-bottom: 16px;
+        }
     </style>
 
     <a href="{{ url('matches') }}" class="btn btn-back">Tornar al Llistat de Partits</a>
@@ -156,13 +164,13 @@
     </div>
 
     @if ($errors->any())
-        <div class="alert">
-             <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
 
 

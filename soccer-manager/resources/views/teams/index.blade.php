@@ -158,7 +158,7 @@
                     <form action="{{ route('teams.destroy', $team->id) }}" method="POST" style="display: inline-block;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-delete" onclick="return confirm('Estàs segur que vols borrar aquest equip?')">Borrar</button>
+                        <button type="submit" class="btn btn-delete" onclick="return confirm('Estàs segur que vols borrar aquest equip? Aquesta acció també eliminarà tots els partits associats.')">Borrar</button>
                     </form>
                 </div>
             </div>

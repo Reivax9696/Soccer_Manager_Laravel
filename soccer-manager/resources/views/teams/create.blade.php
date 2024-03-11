@@ -97,6 +97,15 @@
         input[type="text"] {
             width: calc(100% - 16px);
         }
+
+        .alert {
+            font-size: 18px;
+            background-color: #DC2626;
+            color: #fff;
+            border-radius: 4px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+        }
     </style>
 
     <a href="{{ url('teams') }}" class="btn btn-back">Tornar al Llistat de Equips</a>
@@ -114,7 +123,7 @@
                 @endforeach
             </ul>
         </div>
-       @endif
+        @endif
 
         <div class="box form-box">
             <form action="{{ route('teams.store') }}" method="POST">

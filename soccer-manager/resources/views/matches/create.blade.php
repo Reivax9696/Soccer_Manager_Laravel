@@ -147,6 +147,15 @@
             width: calc(100% - 16px);
         }
 
+        .alert {
+           font-size: 18px;
+           background-color: #DC2626;
+           color: #fff;
+           border-radius: 4px;
+           padding: 12px 16px;
+           margin-bottom: 16px;
+         }
+
 
     </style>
 
@@ -165,7 +174,7 @@
                 @endforeach
             </ul>
         </div>
-       @endif
+        @endif
 
      <form action="{{ route('matches.store') }}" method="POST" class="form-box">
         @csrf
